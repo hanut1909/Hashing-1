@@ -1,0 +1,24 @@
+class Solution(object):
+    def isIsomorphic(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        smap={}
+        tmap={}
+        if(len(s)!=len(t)):
+            return False
+        
+        for i in range(len(s)):
+            schar=s[i]
+            tchar=t[i]
+            if(schar not in smap and tchar not in tmap):
+                smap[schar]=tchar
+                tmap[tchar]=schar
+            elif smap.get(schar) == tchar and tmap.get(tchar) == schar:
+                continue
+            else:
+                return False
+                
+        return True
